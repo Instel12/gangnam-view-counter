@@ -1,0 +1,20 @@
+<html>
+<center>
+  <h1>Gangnam Style View Counter</h1>
+  <h2 id="viewCounter">null</h2>
+  <img src="https://i0.wp.com/www.helloloser.com/wp-content/uploads/2013/03/baby-gangnam-style-dance.gif?fit=370%2C208&ssl=1">
+  <p>
+  © Instel, 2025 <a><img style="height: 15px;" src="https://raw.githubusercontent.com/Instel12/ibl-licence/refs/heads/main/IBL.png"></a>
+  </center>
+  <script>
+    async function updateviews() {
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=9bZkp7q19f0&key=AIzaSyD1NKj8gmolso88du33REXxCh9dwCiPR4Q`);
+      const data = await response.json();
+      const viewCount = data.items[0].statistics.viewCount;
+      document.getElementById("viewCounter").innerText = viewCount.toLocaleString();
+    }
+
+    updateviews();
+    setInterval(updateviews, 10000);
+  </script>
+</html>
